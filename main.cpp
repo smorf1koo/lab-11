@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <numeric>
-#include <fstream>
 #include <list>
 #include <deque>
+#include <algorithm>
 #include <iterator>
+#include <numeric>
+#include <fstream>
 
 //перегрузил оператор вывода для вектора любого типа данных
 template<typename Container>
@@ -36,95 +36,117 @@ std::ostream& operator<<(std::ostream& os, const std::deque<T>& vec) {
     return printContainer(os, vec);
 }
 int main(){
-//
-//    //TASK 1
-//    std::cout << "TASK 1\n";
-//    std::list <int> list;
-//    unsigned int n;
-//    std::cout << "Enter List size: \n";
-//    std::cin >> n;
-//    int value;
-//    while (list.size() < n){
-//        std::cin >> value;
-//        list.push_back(value);
-//    }
-//    std::cout << "Entered List: " << list;
-//
-//    //проверим, есть ли в векторе число, кратное 5
-//    if (std::find_if(list.begin(), list.end(), [](int i) { return i % 5 == 0; }) != std::end(list)) {
-//        std::cout << "List includes a number divisible by 5\n";
-//    } else {
-//        std::cout << "List doesn't include a number divisible by 5\n";
-//    }
-//
-//    // посчитаем отрицательные символы
-//    int count = std::count_if(list.begin(), list.end(), [](int i){ return i < 0; });
-//    std::cout << "Negative values: " << count << "\n";
-//
-//    //посчитаем сумму элементов
-//    int sum = std::accumulate(list.begin(), list.end(), 0);
-//    std:: cout << "Sum of vector elements: " << sum << '\n';
-//    list.clear(); //освобождаем память
 
-//    //TASK2
-//    std::cout << "TASK 2\n";
-//    std::vector <int> vec = {1, 5, 6, -42, 5, 52};
-//    std::cout << "Entered vector: " << vec;
-//
-//    //добавим значения в конец и после 5 элемента
-//    std::insert_iterator <std::vector <int>> inserter(vec, 5+vec.begin());
-//    *inserter = 10;
-//    std::back_inserter(vec) = -1;
-//    std::cout << "Vector with new elements: " << vec;
-//
-//    //переместимся итератором на желаемую позицию и удалим все элменты до нее
-//    auto it = vec.begin();
-//    std::advance(it, 2);
-//    vec.erase(vec.begin(), it);
-//    std::cout << "Vector without 1-2 elements: " << vec;
+    //TASK 1
+    std::cout << "TASK 1\n";
+    std::list <int> list;
+    unsigned int n;
+    std::cout << "Enter List size: \n";
+    std::cin >> n;
+    int value;
+    while (list.size() < n){
+        std::cin >> value;
+        list.push_back(value);
+    }
+    std::cout << "Entered List: " << list;
 
-//    // TASK3
-//    std::cout << "TASK 3\n";
-//    std::ifstream inputfile("input.txt");
-//
-//    if (!inputfile.is_open()){
-//        std::cerr << "error open_file\n";
-//        return 1;
-//    }
-//    std::vector<std::string> lines;
-//
-//    //считаем все строки из файла
-//    std::istream_iterator<std::string> input (inputfile); // итератор поотока ввода (читает строки)
-//    std::copy(input,
-//              std::istream_iterator<std::string>(),
-//              std::back_inserter(lines));
-//    inputfile.close();
-//    std::cout << lines;
-//
-//    //немного изменим строки
-//    std::for_each(lines.begin(), lines.end(), [](std::string& line){ line = "Pokormite_pls-" + line;});
-//    std::cout << lines;
-//
-//    //открываем файл для записи
-//    std::ofstream outputfile("output.txt");
-//    if (!outputfile.is_open()){
-//        std::cerr << "error open_file\n";
-//        return 1;
-//    }
-//
-//    std::copy(lines.begin(),
-//              lines.end(),
-//              std::ostream_iterator<std::string>(outputfile, "\n"));
-//    outputfile.close();
+    //проверим, есть ли в векторе число, кратное 5
+    if (std::find_if(list.begin(), list.end(), [](int i) { return i % 5 == 0; }) != std::end(list)) {
+        std::cout << "List includes a number divisible by 5\n";
+    } else {
+        std::cout << "List doesn't include a number divisible by 5\n";
+    }
 
-//    // TASK4
-//    std::cout << "TASK 4\n";
-//    std::vector <int> vec = {2, 6, 66, 2};
-//    std::deque <int> deq;
-//    std::copy(vec.begin(), vec.end(), std::back_inserter(deq));
-//    std::cout << "Copied deque: " << deq;
+    // посчитаем отрицательные символы
+    int count = std::count_if(list.begin(), list.end(), [](int i){ return i < 0; });
+    std::cout << "Negative values: " << count << "\n";
+
+    //посчитаем сумму элементов
+    int sum = std::accumulate(list.begin(), list.end(), 0);
+    std:: cout << "Sum of vector elements: " << sum << '\n';
+    list.clear(); //освобождаем память
+    std::cout << '\n';
+
+    //TASK2
+    std::cout << "TASK 2\n";
+    std::vector <int> vec = {1, 5, 6, -42, 5, 52};
+    std::cout << "Entered vector: " << vec;
+
+    //добавим значения в конец и после 5 элемента
+    std::insert_iterator <std::vector <int>> inserter(vec, 5+vec.begin());
+    *inserter = 10;
+    std::back_inserter(vec) = -1;
+    std::cout << "Vector with new elements: " << vec;
+
+    //переместимся итератором на желаемую позицию и удалим все элменты до нее
+    auto it = vec.begin();
+    std::advance(it, 2);
+    vec.erase(vec.begin(), it);
+    std::cout << "Vector without 1-2 elements: " << vec;
+    vec.clear(); //освобождаем память
+    std::cout << '\n';
+
+    // TASK3
+    std::cout << "TASK 3\n";
+    std::ifstream inputfile("input.txt");
+
+    if (!inputfile.is_open()){
+        std::cerr << "error open_file\n";
+        return 1;
+    }
+    std::vector<std::string> lines;
+
+    //считаем все строки из файла
+    std::istream_iterator<std::string> input (inputfile); // итератор поотока ввода (читает строки)
+    std::copy(input,
+              std::istream_iterator<std::string>(),
+              std::back_inserter(lines));
+    inputfile.close();
+    std::cout << lines;
+
+    //немного изменим строки
+    std::for_each(lines.begin(), lines.end(), [](std::string& line){ line = "Pokormite_pls-" + line;});
+    std::cout << lines;
+
+    //открываем файл для записи
+    std::ofstream outputfile("output.txt");
+    if (!outputfile.is_open()){
+        std::cerr << "error open_file\n";
+        return 1;
+    }
+
+    std::copy(lines.begin(),
+              lines.end(),
+              std::ostream_iterator<std::string>(outputfile, "\n"));
+    outputfile.close();
+    lines.clear(); //освобождаем память
+    std::cout << '\n';
+
+    // TASK4
+    std::cout << "TASK 4\n";
+    std::vector <int> vector = {2, 6, 66, 2};
+    std::deque <int> deq;
+    std::copy(vector.begin(), vector.end(), std::back_inserter(deq));
+    std::cout << "Copied deque: " << deq;
+    vector.clear(); //освобождаем память
+    deq.clear(); //освобождаем память
+    std::cout << '\n';
 
     // TASK5
     std::cout << "TASK 5\n";
+    std::list <int> List;
+    unsigned int size;
+    std::cout << "Enter List size: \n";
+    std::cin >> size;
+    int val;
+    while (List.size() < size){
+        std::cin >> val;
+        List.push_back(val);
+    }
+    std::cout << "Entered List: " << List;
+    std::cout << "In reverse order: ";
+    std::copy(List.rbegin(), List.rend(), std::ostream_iterator<int>(std::cout, " "));
+    list.clear();
+    std::cout << '\n';
     return 0;
 }
