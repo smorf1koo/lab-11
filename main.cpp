@@ -117,11 +117,14 @@ int main(){
 //              std::ostream_iterator<std::string>(outputfile, "\n"));
 //    outputfile.close();
 
-    // TASK4
-    std::cout << "TASK 4\n";
-    std::vector <int> vec = {2, 6, 66, 2};
-    std::deque <int> deq;
-    std::copy(vec.begin(), vec.end(), std::back_inserter(deq));
-    std::cout << "Copied deque: " << deq;
+//    // TASK4
+//    std::cout << "TASK 4\n";
+//    std::vector <int> vec = {2, 6, 66, 2};
+//    std::deque <int> deq;
+//    std::copy(vec.begin(), vec.end(), std::back_inserter(deq));
+//    std::cout << "Copied deque: " << deq;
+
+    // TASK5
+    std::cout << "TASK 5\n";
     return 0;
 }
