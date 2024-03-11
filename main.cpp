@@ -4,6 +4,7 @@
 #include <numeric>
 #include <fstream>
 #include <list>
+#include <deque>
 #include <iterator>
 
 //перегрузил оператор вывода для вектора любого типа данных
@@ -29,6 +30,11 @@ std::ostream& operator<<(std::ostream& os, const std::list<T>& list) {
     return printContainer(os, list);
 }
 
+// Перегрузка оператора вывода для двусторонней очереди
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const std::deque<T>& vec) {
+    return printContainer(os, vec);
+}
 int main(){
 //
 //    //TASK 1
@@ -77,38 +83,45 @@ int main(){
 //    vec.erase(vec.begin(), it);
 //    std::cout << "Vector without 1-2 elements: " << vec;
 
-    // TASK3
-    std::cout << "TASK 3\n";
-    std::ifstream inputfile("input.txt");
+//    // TASK3
+//    std::cout << "TASK 3\n";
+//    std::ifstream inputfile("input.txt");
+//
+//    if (!inputfile.is_open()){
+//        std::cerr << "error open_file\n";
+//        return 1;
+//    }
+//    std::vector<std::string> lines;
+//
+//    //считаем все строки из файла
+//    std::istream_iterator<std::string> input (inputfile); // итератор поотока ввода (читает строки)
+//    std::copy(input,
+//              std::istream_iterator<std::string>(),
+//              std::back_inserter(lines));
+//    inputfile.close();
+//    std::cout << lines;
+//
+//    //немного изменим строки
+//    std::for_each(lines.begin(), lines.end(), [](std::string& line){ line = "Pokormite_pls-" + line;});
+//    std::cout << lines;
+//
+//    //открываем файл для записи
+//    std::ofstream outputfile("output.txt");
+//    if (!outputfile.is_open()){
+//        std::cerr << "error open_file\n";
+//        return 1;
+//    }
+//
+//    std::copy(lines.begin(),
+//              lines.end(),
+//              std::ostream_iterator<std::string>(outputfile, "\n"));
+//    outputfile.close();
 
-    if (!inputfile.is_open()){
-        std::cerr << "error open_file\n";
-        return 1;
-    }
-    std::vector<std::string> lines;
-
-    //считаем все строки из файла
-    std::istream_iterator<std::string> input (inputfile); // итератор поотока ввода (читает строки)
-    std::copy(input,
-              std::istream_iterator<std::string>(),
-              std::back_inserter(lines));
-    inputfile.close();
-    std::cout << lines;
-
-    //немного изменим строки
-    std::for_each(lines.begin(), lines.end(), [](std::string& line){ line = "Pokormite_pls-" + line;});
-    std::cout << lines;
-
-    //открываем файл для записи
-    std::ofstream outputfile("output.txt");
-    if (!outputfile.is_open()){
-        std::cerr << "error open_file\n";
-        return 1;
-    }
-
-    std::copy(lines.begin(),
-              lines.end(),
-              std::ostream_iterator<std::string>(outputfile, "\n"));
-    outputfile.close();
+    // TASK4
+    std::cout << "TASK 4\n";
+    std::vector <int> vec = {2, 6, 66, 2};
+    std::deque <int> deq;
+    std::copy(vec.begin(), vec.end(), std::back_inserter(deq));
+    std::cout << "Copied deque: " << deq;
     return 0;
 }
